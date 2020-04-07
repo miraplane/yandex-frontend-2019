@@ -1,0 +1,14 @@
+{{#if scene.achivki.length}}
+    <ul class="achivki">
+        {{#each scene.achivki}}
+            <li class="achivki-item">
+                <img src="{{ ../staticBasePath }}{{ img }}">
+                <span class="achivki-item-receive">Достижение получено</span>
+                <span class="achivki-item-title">
+                    {{ title }}
+                </span>
+            </li>
+        {{/each}}
+    </ul>
+{{^}}
+{{/if}}
