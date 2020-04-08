@@ -132,20 +132,20 @@ a {
 }
 
 .scene-content-left {
-  left: 5%;
+  left: 3%;
 }
 
 .scene-content-bottom {
-  bottom: 10%;
+  bottom: 8%;
 }
 
 .scene-content-right {
   text-align: right;
-  right: 5%;
+  right: 3%;
 }
 
 .scene-content-top {
-  top: 10%;
+  top: 8%;
 }
 
 .action {

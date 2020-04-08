@@ -49,6 +49,114 @@ module.exports = () => Scene.bulkCreate([
         img: 'http://miraplane-task-2019.surge.sh/threeHeroes.jpg',
         createdAt: currentDate,
         updatedAt: currentDate
+    },
+    {
+        content: 'Чем сегодня займутся сестрички TRIX?',
+        contentPosition: 'leftTop',
+        img: 'http://miraplane-task-2019.surge.sh/wathsapp.png',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        content: 'В библиотеке оказалось жутко скучно',
+        contentPosition: 'leftBottom',
+        img: 'http://miraplane-task-2019.surge.sh/lib.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        content: 'В бой...',
+        contentPosition: 'leftBottom',
+        img: 'http://miraplane-task-2019.surge.sh/trixvswinx.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        content: 'Ура! Каникулы, можно пойти погулять, поиграть с друзьями, что же выбрать?',
+        contentPosition: 'leftBottom',
+        img: 'http://miraplane-task-2019.surge.sh/stayhome.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        content: 'Я в домике и тут хорошо :)',
+        contentPosition: 'leftBottom',
+        img: 'http://miraplane-task-2019.surge.sh/yvdom.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        content: 'Куда на этот раз отправимся братцы?',
+        contentPosition: 'rightTop',
+        img: 'http://miraplane-task-2019.surge.sh/wheretogo.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        img: 'http://miraplane-task-2019.surge.sh/sea.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        img: 'http://miraplane-task-2019.surge.sh/egypt.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        img: 'http://miraplane-task-2019.surge.sh/res.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        img: 'http://miraplane-task-2019.surge.sh/total_war.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        content: 'Выбери материал для построения домика',
+        contentPosition: 'leftBottom',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        img: 'http://miraplane-task-2019.surge.sh/nif.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        img: 'http://miraplane-task-2019.surge.sh/nuf.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        img: 'http://miraplane-task-2019.surge.sh/naf.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        content: 'А какой путь выберешь ты?',
+        contentPosition: 'leftBottom',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        img: 'http://miraplane-task-2019.surge.sh/home.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        content: 'Спряч котлетку так, что бы ее никто не нашел',
+        contentPosition: 'leftTop',
+        img: 'http://miraplane-task-2019.surge.sh/eat.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        content: 'В животике самое надежное место!!!',
+        contentPosition: 'rightBottom',
+        img: 'http://miraplane-task-2019.surge.sh/happy.jpg',
+        createdAt: currentDate,
+        updatedAt: currentDate
     }
 
     ]);
