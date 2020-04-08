@@ -1,0 +1,31 @@
+<article class="scene-content">
+    {{#if scene.img}}
+        <img src="{{ scene.img }}">
+        {{#switch scene.contentPosition}}
+            {{#case 'leftBottom'}}
+                <span class="scene-content-left scene-content-bottom scene-content-color">
+                    {{ scene.content }}
+                </span>
+            {{/case}}
+            {{#case 'leftTop'}}
+                <span class="scene-content-left scene-content-top scene-content-color">
+                    {{ scene.content }}
+                </span>
+            {{/case}}
+            {{#case 'rightBottom'}}
+                <span class="scene-content-right scene-content-bottom scene-content-color">
+                    {{ scene.content }}
+                </span>
+            {{/case}}
+            {{#case 'rightTop'}}
+                <span class="scene-content-right scene-content-top scene-content-color">
+                    {{ scene.content }}
+                </span>
+            {{/case}}
+        {{/switch}}
+    {{else}}
+        <span class="scene-content-leftTop">
+            {{ scene.content }}
+        </span>
+    {{/if}}
+</article>
