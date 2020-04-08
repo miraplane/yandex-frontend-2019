@@ -1,9 +1,9 @@
 'use strict';
 
-const AdventureHashtags = require('../models').AdventureHashtags;
+const AdventureHashtag = require('../models').AdventureHashtag;
 const currentDate = new Date();
 
-module.exports = () => AdventureHashtags.bulkCreate([
+module.exports = () => AdventureHashtag.bulkCreate([
     {
         adventureId: 1,
         hashtagId: 1,

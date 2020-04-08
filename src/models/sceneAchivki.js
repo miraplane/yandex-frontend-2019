@@ -1,6 +1,8 @@
 'use strict';
+const config = require('./config');
+
 module.exports = (sequelize, DataTypes) => {
-    const SceneAchivki = sequelize.define('SceneAchivki', {
+    const SceneAchivki = sequelize.define(config.sceneAchivki.model, {
         sceneId: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -13,8 +15,12 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
     SceneAchivki.associate = function(models) {
-        SceneAchivki.belongsTo(models.Scene, {foreignKey: 'sceneId'});
-        SceneAchivki.belongsTo(models.Achivki, {foreignKey: 'achivkiId'});
+        SceneAchivki.belongsTo(models.Scene, {
+            foreignKey: config.scene.foreignKey.belongsToManyToAchivki
+        });
+        SceneAchivki.belongsTo(models.Achivki, {
+            foreignKey: config.achivki.foreignKey.belongsToManyToScene
+        });
     };
     return SceneAchivki;
 };

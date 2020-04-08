@@ -1,7 +1,9 @@
 'use strict';
+const config = require('../models/config');
+
 module.exports = {
     up: (queryInterface, Sequelize) =>
-        queryInterface.createTable('Hashtags', {
+        queryInterface.createTable(config.hashtag.db, {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -26,6 +28,6 @@ module.exports = {
             }
         }),
     down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('Hashtags');
+        return queryInterface.dropTable(config.hashtag.db);
     }
 };

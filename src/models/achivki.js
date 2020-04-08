@@ -1,6 +1,8 @@
 'use strict';
+const achivki = require('./config').achivki;
+
 module.exports = (sequelize, DataTypes) => {
-    const Achivki = sequelize.define('Achivki', {
+    const Achivki = sequelize.define(achivki.model, {
         title: {
             type: DataTypes.STRING,
             allowNull: false
@@ -13,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     Achivki.associate = function(models) {
         Achivki.belongsToMany(models.Scene, {
             through: models.SceneAchivki,
-            foreignKey: 'achivkiId',
+            foreignKey: achivki.foreignKey.belongsToManyToScene,
             as: 'scenes'
         });
     };

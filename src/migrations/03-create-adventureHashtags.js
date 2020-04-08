@@ -1,7 +1,9 @@
 'use strict';
+const config = require('../models/config');
+
 module.exports = {
     up: (queryInterface, Sequelize) =>
-        queryInterface.createTable('AdventureHashtags', {
+        queryInterface.createTable(config.adventureHashtag.db, {
             adventureId: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
@@ -22,6 +24,6 @@ module.exports = {
             }
         }),
     down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('AdventureHashtags');
+        return queryInterface.dropTable(config.adventureHashtag.db);
     }
 };

@@ -1,7 +1,8 @@
 'use strict';
+const hashtag = require('./config').hashtag;
 
 module.exports = (sequelize, DataTypes) => {
-  const Hashtag = sequelize.define('Hashtag', {
+  const Hashtag = sequelize.define(hashtag.model, {
       title: {
           type: DataTypes.STRING,
           allowNull: false
@@ -13,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
   });
   Hashtag.associate = function(models) {
       Hashtag.belongsToMany(models.Adventure, {
-          through: models.AdventureHashtags,
-          foreignKey: 'hashtagId',
+          through: models.AdventureHashtag,
+          foreignKey: hashtag.foreignKey.belongsToManyToAdventure,
           as: 'adventures'
       });
   };

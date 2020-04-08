@@ -1,7 +1,8 @@
 'use strict';
+const config = require('./config');
 
 module.exports = (sequelize, DataTypes) => {
-    const Adventure = sequelize.define('Adventure', {
+    const Adventure = sequelize.define(config.adventure.model, {
         title: {
             type: DataTypes.STRING,
             allowNull: false
@@ -9,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         img: {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: 'default.jpg'
+            defaultValue: 'http://miraplane-task-2019.surge.sh/default.jpg'
         },
         content: {
             type: DataTypes.STRING,
@@ -19,15 +20,15 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
             type: DataTypes.INTEGER,
             references: {
-                model: 'Scene',
+                model: config.scene.model,
                 key: 'id'
             }
         }
     });
     Adventure.associate = function(models) {
         Adventure.belongsToMany(models.Hashtag, {
-            through: models.AdventureHashtags,
-            foreignKey: 'adventureId',
+            through: models.AdventureHashtag,
+            foreignKey: config.adventure.foreignKey.belongsToManyToHashtag,
             as: 'hashtags'
         });
     };

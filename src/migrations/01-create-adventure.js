@@ -1,8 +1,9 @@
 'use strict';
+const config = require('../models/config');
 
 module.exports = {
     up: (queryInterface, Sequelize) =>
-        queryInterface.createTable('Adventures', {
+        queryInterface.createTable(config.adventure.db, {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -16,7 +17,7 @@ module.exports = {
             img: {
                 type: Sequelize.STRING,
                 allowNull: false,
-                defaultValue: 'default.jpg'
+                defaultValue: 'http://miraplane-task-2019.surge.sh/default.jpg'
             },
             content: {
                 type: Sequelize.STRING,
@@ -36,6 +37,6 @@ module.exports = {
             }
         }),
     down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('Adventures');
+        return queryInterface.dropTable(config.adventure.db);
     }
 };

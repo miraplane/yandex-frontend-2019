@@ -20,17 +20,17 @@ if (config.use_env_variable) {
 fs
     .readdirSync(__dirname)
     .filter((file) =>
-        (file.indexOf('.') !== 0) &&
         (file !== basename) &&
-        (file.slice(-3) === '.js'))
+        (file.match(/\.js$/)))
     .forEach((file) => {
+        console.info(file);
         const model = sequelize.import(path.join(__dirname, file));
         db[model.name] = model;
     });
 
-Object.keys(db).forEach((modelName) => {
-    if (db[modelName].associate) {
-        db[modelName].associate(db);
+Object.values(db).forEach((modelName) => {
+    if (modelName.associate) {
+        modelName.associate(db);
     }
 });
 

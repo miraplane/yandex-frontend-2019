@@ -1,12 +1,14 @@
 'use strict';
+const config = require('./config');
+
 module.exports = (sequelize, DataTypes) => {
-    const AdventureHashtags = sequelize.define('AdventureHashtags', {
+    const AdventureHashtag = sequelize.define(config.adventureHashtag.model, {
         adventureId: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             references: {
-                model: 'Adventure',
+                model: config.adventure.model,
                 key: 'id'
             }
         },
@@ -15,10 +17,10 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             primaryKey: true,
             references: {
-                model: 'Hashtag',
+                model: config.hashtag.model,
                 key: 'id'
             }
         }
     });
-    return AdventureHashtags;
+    return AdventureHashtag;
 };

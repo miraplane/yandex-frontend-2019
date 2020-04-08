@@ -1,7 +1,9 @@
 'use strict';
+const congig = require("../models/config");
+
 module.exports = {
     up: (queryInterface, Sequelize) =>
-        queryInterface.createTable('Actions', {
+        queryInterface.createTable(congig.action.db, {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -30,6 +32,6 @@ module.exports = {
             }
         }),
     down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('Actions');
+        return queryInterface.dropTable(congig.action.db);
     }
 };

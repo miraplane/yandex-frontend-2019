@@ -1,6 +1,8 @@
 'use strict';
+const config = require('./config');
+
 module.exports = (sequelize, DataTypes) => {
-    const Action = sequelize.define('Action', {
+    const Action = sequelize.define(config.action.model, {
         title: {
             type: DataTypes.STRING,
             allowNull: false
@@ -9,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
             type: DataTypes.INTEGER,
             references: {
-                model: 'Scene',
+                model: config.scene.model,
                 key: 'id'
             }
         },
@@ -17,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
             type: DataTypes.INTEGER,
             references: {
-                model: 'Scene',
+                model: config.scene.model,
                 key: 'id'
             }
         }

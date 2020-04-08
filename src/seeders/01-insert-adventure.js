@@ -6,13 +6,13 @@ const currentDate = new Date();
 module.exports = () => Adventure.bulkCreate([
     {
         title: "Эпичный квест",
-        img: "epic-cvest.jpg",
+        img: "http://miraplane-task-2019.surge.sh/epic-cvest.jpg",
         createdAt: currentDate,
         updatedAt: currentDate
     },
     {
         title: "Приключение мага",
-        img: "jodah.jpg",
+        img: "http://miraplane-task-2019.surge.sh/jodah.jpg",
         content: "Древнее Зло вновь набирается сил... Грядет новая битва. Вы – единственная надежда выстоять в финальной битве с темными силами.",
         createdAt: currentDate,
         updatedAt: currentDate

@@ -6,13 +6,13 @@ const currentDate = new Date();
 module.exports = () => Achivki.bulkCreate([
     {
         title: "Мудрец",
-        img: "magical.jpg",
+        img: "http://miraplane-task-2019.surge.sh/magical.jpg",
         createdAt: currentDate,
         updatedAt: currentDate
     },
     {
         title: "YOU DIED",
-        img: "skeleton.jpg",
+        img: "http://miraplane-task-2019.surge.sh/skeleton.jpg",
         createdAt: currentDate,
         updatedAt: currentDate
     }
