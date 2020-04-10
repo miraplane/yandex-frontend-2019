@@ -23,7 +23,6 @@ fs
         (file !== basename) &&
         (file.match(/\.js$/)))
     .forEach((file) => {
-        console.info(file);
         const model = sequelize.import(path.join(__dirname, file));
         db[model.name] = model;
     });

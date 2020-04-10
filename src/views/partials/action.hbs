@@ -2,12 +2,12 @@
     <ul class="action">
         {{#each scene.actions}}
             <li class="action-item">
-                <a href="/scene/{{ nextSceneId }}">{{ title }}</a>
+                <a href="/api/scene/{{ nextSceneId }}">{{ title }}</a>
             </li>
         {{/each}}
     </ul>
 {{else}}
     <div class="action-repeat">
-        <a href="/scene/{{ firstSceneId }}">Начать заново</a>
+        <a href="/api/scene/{{ firstSceneId }}">Начать заново</a>
     </div>
 {{/if}}

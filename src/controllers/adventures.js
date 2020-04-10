@@ -6,6 +6,7 @@ const Hashtag = models.Hashtag;
 
 const scenesController = require('./scenes');
 
+const batchSize = 5;
 
 module.exports = {
     list(req, res) {
@@ -13,6 +14,8 @@ module.exports = {
 
         return Adventure
             .findAll({
+                offset: req.query.offset,
+                limit: batchSize,
                 where: {
                     firstSceneId: { [Op.ne]: null }
                 },
@@ -24,11 +27,11 @@ module.exports = {
                     as: 'hashtags'
                 }],
             })
-            .then(adventure => res.render('../views/index', {
+            .then(adventure => res.status(200).send({
                 adventures: adventure,
-                meta,
-                staticBasePath,
-                title
+                meta: meta,
+                staticBasePath: staticBasePath,
+                title: title
             }))
             .catch(error => res.status(400).send(error));
     },
@@ -36,7 +39,6 @@ module.exports = {
     listByName(req, res) {
         const {meta, staticBasePath, title} = req.locals;
         let adventureId = [];
-        let selectHashtag;
 
         return Adventure
             .findAll({
@@ -51,7 +53,6 @@ module.exports = {
             })
             .each(adventure => {
                 adventureId.push(adventure.id);
-                selectHashtag = adventure.hashtags[0];
             })
             .then(() => {
                 return Adventure
@@ -69,9 +70,8 @@ module.exports = {
                         }],
                     })
             })
-            .then(adventure => res.render('../views/index-hashtag', {
+            .then(adventure => res.status(200).send({
                 adventures: adventure,
-                hashtag: selectHashtag,
                 meta,
                 staticBasePath,
                 title

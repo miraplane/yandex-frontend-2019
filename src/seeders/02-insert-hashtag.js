@@ -22,5 +22,29 @@ module.exports = () => Hashtag.bulkCreate([
         link: 'magic',
         createdAt: currentDate,
         updatedAt: currentDate
+    },
+    {
+        title: 'котята',
+        link: 'kittens',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        title: 'мультики',
+        link: 'cartoons',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        title: 'три',
+        link: 'three',
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        title: 'stayhome',
+        link: 'stayhome',
+        createdAt: currentDate,
+        updatedAt: currentDate
     }
 ]);

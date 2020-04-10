@@ -1,8 +1,10 @@
+@import "./color-variables.css";
+
 body {
   font: 18px/28px Gabriela, serif;
   font-style: normal;
   font-weight: normal;
-  color: #000;
+  color: var(--primary-color);
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -10,7 +12,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: var(--primary-color);
 }
 
 .header {
@@ -29,7 +31,7 @@ a {
 }
 
 .header-title > span {
-  color: #f49ec4;
+  color: var(--theme-color);
 }
 
 .adventure {
@@ -89,11 +91,9 @@ a {
   margin-right: 8px;
   background: #b3b3b3;
   border-radius: 4px;
-}
-
-.hashtags-item > a {
-  color: #fff;
+  color: var(--secondary-color);
   line-height: 38px;
+  cursor: pointer;
 }
 
 .select-hashtag {
@@ -128,24 +128,24 @@ a {
 }
 
 .scene-content-color {
-  color: #fff;
+  color: var(--secondary-color);
 }
 
 .scene-content-left {
-  left: 5%;
+  left: 3%;
 }
 
 .scene-content-bottom {
-  bottom: 10%;
+  bottom: 8%;
 }
 
 .scene-content-right {
   text-align: right;
-  right: 5%;
+  right: 3%;
 }
 
 .scene-content-top {
-  top: 10%;
+  top: 8%;
 }
 
 .action {
@@ -157,19 +157,19 @@ a {
   list-style-type: none;
   margin-right: 52px;
   padding: 20px 30px;
-  background: #555;
+  background: var(--button-color);
 }
 
 .action-item > a,
 .action-repeat > a {
   font: 34px/18px Roboto, serif;
-  color: #fff;
+  color: var(--secondary-color);
 }
 
 .action-repeat {
   margin-top: 20px;
   padding: 20px 30px;
-  background: #555;
+  background: var(--button-color);
   align-self: center;
 }
 
@@ -206,4 +206,13 @@ a {
   grid-area: title;
   font-size: 48px;
   line-height: 38px;
+}
+
+.loading-error {
+  align-self: center;
+  width: 380px;
+  padding: 5px 15px;
+  border-radius: 15px;
+  border: 2px double var(--theme-color);
+  color: var(--theme-color);
 }

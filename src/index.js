@@ -43,10 +43,12 @@ app.use((err, _req, res) => {
 
 require('./handlebarsHelpers').register(hbs);
 hbs.registerPartials(partialsDir, () => {
+    const host = config.get('host');
     const port = config.get('port');
 
-    app.listen(port, () => {
-        console.info(`Server started on ${port}`);
-        console.info(`Open http://localhost:${port}/`);
+    app.listen(port, host, () => {
+    console.info(`Server started on ${port}`);
+    console.info(`Open http://${host}:${port}/`);
     });
 });
+
