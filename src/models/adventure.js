@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         img: {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: 'http://miraplane-task-2019.surge.sh/default.jpg'
+            defaultValue: 'http://miraplane-task-2019.surge.sh/images/default.jpg'
         },
         content: {
             type: DataTypes.STRING,

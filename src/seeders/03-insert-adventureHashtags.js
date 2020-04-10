@@ -159,5 +159,17 @@ module.exports = () => AdventureHashtag.bulkCreate([
         createdAt: currentDate,
         updatedAt: currentDate
     },
+    {
+        adventureId: 5,
+        hashtagId: 7,
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
+    {
+        adventureId: 10,
+        hashtagId: 7,
+        createdAt: currentDate,
+        updatedAt: currentDate
+    },
 ]);
 

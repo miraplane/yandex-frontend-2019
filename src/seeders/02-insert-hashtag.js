@@ -40,5 +40,11 @@ module.exports = () => Hashtag.bulkCreate([
         link: 'three',
         createdAt: currentDate,
         updatedAt: currentDate
+    },
+    {
+        title: 'stayhome',
+        link: 'stayhome',
+        createdAt: currentDate,
+        updatedAt: currentDate
     }
 ]);

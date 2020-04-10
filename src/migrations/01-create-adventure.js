@@ -17,7 +17,7 @@ module.exports = {
             img: {
                 type: Sequelize.STRING,
                 allowNull: false,
-                defaultValue: 'http://miraplane-task-2019.surge.sh/default.jpg'
+                defaultValue: 'http://miraplane-task-2019.surge.sh/images/default.jpg'
             },
             content: {
                 type: Sequelize.STRING,

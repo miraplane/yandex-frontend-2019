@@ -89,11 +89,9 @@ a {
   margin-right: 8px;
   background: #b3b3b3;
   border-radius: 4px;
-}
-
-.hashtags-item > a {
   color: #fff;
   line-height: 38px;
+  cursor: pointer;
 }
 
 .select-hashtag {
@@ -206,4 +204,13 @@ a {
   grid-area: title;
   font-size: 48px;
   line-height: 38px;
+}
+
+.loading-error {
+  align-self: center;
+  width: 380px;
+  padding: 5px 15px;
+  border-radius: 15px;
+  border: 2px double #f49ec4;
+  color: #f49ec4;
 }
