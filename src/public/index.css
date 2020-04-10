@@ -1,8 +1,10 @@
+@import "./color-variables.css";
+
 body {
   font: 18px/28px Gabriela, serif;
   font-style: normal;
   font-weight: normal;
-  color: #000;
+  color: var(--primary-color);
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -10,7 +12,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: var(--primary-color);
 }
 
 .header {
@@ -29,7 +31,7 @@ a {
 }
 
 .header-title > span {
-  color: #f49ec4;
+  color: var(--theme-color);
 }
 
 .adventure {
@@ -89,7 +91,7 @@ a {
   margin-right: 8px;
   background: #b3b3b3;
   border-radius: 4px;
-  color: #fff;
+  color: var(--secondary-color);
   line-height: 38px;
   cursor: pointer;
 }
@@ -126,7 +128,7 @@ a {
 }
 
 .scene-content-color {
-  color: #fff;
+  color: var(--secondary-color);
 }
 
 .scene-content-left {
@@ -155,19 +157,19 @@ a {
   list-style-type: none;
   margin-right: 52px;
   padding: 20px 30px;
-  background: #555;
+  background: var(--button-color);
 }
 
 .action-item > a,
 .action-repeat > a {
   font: 34px/18px Roboto, serif;
-  color: #fff;
+  color: var(--secondary-color);
 }
 
 .action-repeat {
   margin-top: 20px;
   padding: 20px 30px;
-  background: #555;
+  background: var(--button-color);
   align-self: center;
 }
 
@@ -211,6 +213,6 @@ a {
   width: 380px;
   padding: 5px 15px;
   border-radius: 15px;
-  border: 2px double #f49ec4;
-  color: #f49ec4;
+  border: 2px double var(--theme-color);
+  color: var(--theme-color);
 }

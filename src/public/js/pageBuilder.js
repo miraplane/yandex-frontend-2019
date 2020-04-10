@@ -1,3 +1,11 @@
+const API_ADVENTURES = '/api/adventures';
+const API_ADVENTURES_START = '/api/adventures/start';
+const ADVENTURES = '/adventures';
+
+const CLASS_ADVENTURE = 'adventure';
+const CLASS_ADVENTURE_ITEM = 'adventure-item';
+const CLASS_SELECT_HASHTAG = 'select-hashtag';
+
 let adventureItem = document.querySelector('.adventure');
 let adventureCounter = 0;
 
@@ -6,31 +14,33 @@ let newState = {
     adventures: [],
     observe: true
 };
-let lastAdventure = document.querySelector('.adventure');
+let lastAdventure = document.querySelector(`.${CLASS_ADVENTURE}`);
 
 const intersectionObserver = new IntersectionObserver(entries => {
     if (entries.some(entry => entry.intersectionRatio > 0)) {
-        fetch(`/api/adventures?offset=${adventureCounter}`)
+        fetch(`${API_ADVENTURES}?offset=${adventureCounter}`)
             .then(res => res.json())
             .then(data => {
                 intersectionObserver.unobserve(lastAdventure);
                 newState.adventures = data.adventures;
-                history.pushState(newState, null, `/adventures`);
+                history.pushState(newState, null, ADVENTURES);
 
                 if (data.adventures.length !== 0) {
                     addAdventures(data.adventures);
-                    lastAdventure = document.querySelector('.adventure-item:last-of-type');
+                    adventureCounter += data.adventures.length;
+
+                    lastAdventure = document.querySelector(`.${CLASS_ADVENTURE_ITEM}:last-of-type`);
                     intersectionObserver.observe(lastAdventure);
                 }
             })
-            .catch(createErrorBox)
+            .catch(createErrorBox);
 
     }
 });
 intersectionObserver.observe(lastAdventure);
 
-history.pushState({}, null, `/`);
-window.onpopstate = showContent;
+history.pushState({}, null, '/');
+window.onpopstate = history.onpushstate = showContent;
 
 
 function showContent(event) {
@@ -44,13 +54,13 @@ function showContent(event) {
         addAdventures(event.state.adventures);
     }
     if (event.state.observe) {
-        lastAdventure = document.querySelector('.adventure-item:last-of-type');
+        lastAdventure = document.querySelector((`.${CLASS_ADVENTURE_ITEM}:last-of-type`));
         intersectionObserver.observe(lastAdventure);
     }
 }
 
 function createLink(className, href, content) {
-    let link = document.createElement('a');
+    const link = document.createElement('a');
     link.classList.add(className);
     link.setAttribute('href', href);
     link.textContent = content;
@@ -59,14 +69,14 @@ function createLink(className, href, content) {
 }
 
 function createImg(src) {
-    let img = document.createElement('img');
+    const img = document.createElement('img');
     img.setAttribute('src', src);
 
     return img;
 }
 
 function createSpan(className, content) {
-    let span = document.createElement('span');
+    const span = document.createElement('span');
     span.classList.add(className);
     span.textContent = content;
 
@@ -74,21 +84,21 @@ function createSpan(className, content) {
 }
 
 function createHashtagBox(className, content) {
-    let box = document.createElement('div');
+    const box = document.createElement('div');
     box.classList.add(className);
-    box.textContent = '#' + content;
+    box.textContent = `#${content}`;
 
     return box;
 }
 
 function addHashtags(hashtags) {
-    let ul = document.createElement('ul');
+    const ul = document.createElement('ul');
     ul.classList.add('hashtags');
     for (let hashtag of hashtags) {
-        let newHashtag = document.createElement('li');
+        const newHashtag = document.createElement('li');
         newHashtag.classList.add('hashtags-item');
 
-        newHashtag.textContent = '#' + hashtag.title;
+        newHashtag.textContent = `#${hashtag.title}`;
         newHashtag.setAttribute('onclick', `goToHashtagPage('${hashtag.title}', '${hashtag.link}')`);
 
         ul.appendChild(newHashtag);
@@ -102,20 +112,20 @@ function clearAdventuresList() {
     document.body.removeChild(adventureItem);
 
     adventureItem = document.createElement('ul');
-    adventureItem.classList.add('.adventure');
+    adventureItem.classList.add(`${CLASS_ADVENTURE}`);
     document.body.appendChild(adventureItem);
 }
 
 function deleteHashTagBox() {
-    document.body.querySelectorAll('.select-hashtag').forEach(n => n.remove());
+    document.body.querySelectorAll(`.${CLASS_SELECT_HASHTAG}`).forEach(n => n.remove());
 }
 
 function createHashtagPage(title) {
     deleteHashTagBox();
-    let selectHashtag = createHashtagBox('select-hashtag', title);
+    const selectHashtag = createHashtagBox(CLASS_SELECT_HASHTAG, title);
     document.body.appendChild(selectHashtag);
 
-    clearAdventuresList()
+    clearAdventuresList();
 }
 
 function goToHashtagPage(title, link) {
@@ -127,11 +137,11 @@ function goToHashtagPage(title, link) {
         observe: false
     };
 
-    fetch(`/api/adventures/${link}`)
+    fetch(`${API_ADVENTURES}/${link}`)
         .then(res => res.json())
         .then(data => {
             newState.adventures = data.adventures;
-            history.pushState(newState, null, `/adventures/${link}`);
+            history.pushState(newState, null, `${ADVENTURES}/${link}`);
 
             if (data.adventures.length !== 0) {
                 addAdventures(data.adventures);
@@ -139,28 +149,27 @@ function goToHashtagPage(title, link) {
         })
         .catch(createErrorBox);
 
-
 }
 
 function createAdventure(data) {
-    let newAdventure = document.createElement('li');
-    newAdventure.classList.add('adventure-item');
-    let imgLink = createLink(
+    const newAdventure = document.createElement('li');
+    newAdventure.classList.add(CLASS_ADVENTURE_ITEM);
+    const imgLink = createLink(
         'adventure-item-img',
-        '/api/adventures/start/' + data.id,
+        `${API_ADVENTURES_START}/${data.id}`,
         ''
     );
     imgLink.appendChild(createImg(data.img));
     newAdventure.appendChild(imgLink);
     newAdventure.appendChild(createLink(
         'adventure-item-title',
-        '/api/adventures/start/' + data.id,
-        data.title)
-    );
+        `${API_ADVENTURES_START}/${data.id}`,
+        data.title
+    ));
     newAdventure.appendChild(createSpan(
         'adventure-item-content',
-        data.content)
-    );
+        data.content
+    ));
     newAdventure.appendChild(addHashtags(data.hashtags));
 
     return newAdventure;
@@ -169,12 +178,11 @@ function createAdventure(data) {
 function addAdventures(adventures) {
     for (let adventure of adventures) {
         adventureItem.appendChild(createAdventure(adventure));
-        adventureCounter += 1;
     }
 }
 
 function createErrorBox() {
-    let errorBox = document.createElement('div');
+    const errorBox = document.createElement('div');
     errorBox.classList.add('loading-error');
     errorBox.textContent = 'Не удалось загрузить приключения. Пожалуйста, повтрите попытку позже';
 
