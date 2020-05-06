@@ -1,0 +1,18 @@
+.header {
+  padding: 32px 57px;
+  width: 100%;
+  border-bottom: 1px solid #919191;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.header-title {
+  width: 291px;
+  height: 38px;
+  font: 48px/38px Roboto, serif;
+}
+
+.header-title > span {
+  color: var(--theme-color);
+}

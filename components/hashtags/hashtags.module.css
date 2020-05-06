@@ -1,0 +1,21 @@
+.hashtags {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  grid-area: hashtags;
+}
+
+.hashtags-item {
+  list-style-type: none;
+  height: 38px;
+  padding: 0 18px;
+  margin-right: 8px;
+  background: #b3b3b3;
+  border-radius: 4px;
+  line-height: 38px;
+  cursor: pointer;
+}
+
+.hashtags-item-link {
+  color: var(--secondary-color);
+}

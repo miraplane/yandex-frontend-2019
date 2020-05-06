@@ -1,54 +1,51 @@
+require('isomorphic-fetch');
+
 const path = require('path');
 
 const bodyParser = require('body-parser');
 const config = require('config');
 const express = require('express');
-const hbs  = require('hbs');
 const morgan = require('morgan');
+const next = require('next');
 
-const commonData = require('./middlewares');
+const render = require('./middlewares');
 const routes = require('./routes');
 
-const app = express();
+const server= express();
+const app = next({dev: process.env.NODE_ENV !== 'production'});
 
-const viewsDir = path.join(__dirname, 'views');
-const partialsDir = path.join(viewsDir, 'partials');
-const publicDir = path.join(__dirname, 'public');
-
-app.set('view engine', 'hbs');
-app.set('views', viewsDir);
+const publicDir = path.join(__dirname, '/public');
 
 if (config.get('debug')) {
-    app.use(morgan('dev'));
+    server.use(morgan('dev'));
 }
 
-app.use(express.static(publicDir));
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use((err, _req, _res, next) => {
+server.use(express.static(publicDir));
+server.use(bodyParser.json());
+
+server.use((err, _req, _res, next) => {
     console.error(err.stack);
 
     next();
 });
-app.use(commonData);
 
-routes(app);
+server.use(render(app));
 
-app.use((err, _req, res) => {
+routes(server);
+
+server.use((err, _req, res) => {
     console.error(err.stack);
 
     res.sendStatus(500);
 });
 
-require('./handlebarsHelpers').register(hbs);
-hbs.registerPartials(partialsDir, () => {
+app.prepare().then(() => {
     const host = config.get('host');
     const port = config.get('port');
 
-    app.listen(port, host, () => {
-    console.info(`Server started on ${port}`);
-    console.info(`Open http://${host}:${port}/`);
+    server.listen(port, host, () => {
+        console.info(`Server started on ${port}`);
+        console.info(`Open http://${host}:${port}/`);
     });
 });
 

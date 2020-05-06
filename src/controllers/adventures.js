@@ -10,37 +10,30 @@ const batchSize = 5;
 
 module.exports = {
     list(req, res) {
-        const {meta, staticBasePath, title} = req.locals;
 
-        return Adventure
-            .findAll({
-                offset: req.query.offset,
-                limit: batchSize,
-                where: {
-                    firstSceneId: { [Op.ne]: null }
+    Adventure
+        .findAll({
+            offset: req.query.offset,
+            limit: batchSize,
+            where: {
+                firstSceneId: { [Op.ne]: null }
                 },
-                order: [
-                    ['title', 'DESC']
-                ],
-                include: [{
-                    model: Hashtag,
-                    as: 'hashtags'
-                }],
-            })
-            .then(adventure => res.status(200).send({
-                adventures: adventure,
-                meta: meta,
-                staticBasePath: staticBasePath,
-                title: title
-            }))
-            .catch(error => res.status(400).send(error));
+            order: [
+                ['title', 'DESC']
+            ],
+            include: [{
+                model: Hashtag,
+                as: 'hashtags'
+            }],
+        })
+        .then(adventures => res.json(adventures))
+        .catch(error => res.status(400).send(error));
     },
 
     listByName(req, res) {
-        const {meta, staticBasePath, title} = req.locals;
         let adventureId = [];
 
-        return Adventure
+        Adventure
             .findAll({
                 include: [{
                     model: Hashtag,
@@ -70,17 +63,12 @@ module.exports = {
                         }],
                     })
             })
-            .then(adventure => res.status(200).send({
-                adventures: adventure,
-                meta,
-                staticBasePath,
-                title
-            }))
+            .then(adventures => res.json(adventures))
             .catch(error => res.status(400).send(error));
     },
 
     start(req, res) {
-        return Adventure
+        Adventure
             .findOne({
                 where: {
                     id: req.params.adventureId
@@ -88,7 +76,7 @@ module.exports = {
             })
             .then(adventure => {
                 scenesController.setStartSceneId(adventure.firstSceneId);
-                return scenesController.sceneById(req, res, adventure.firstSceneId);
+                scenesController.sceneById(req, res, adventure.firstSceneId);
                 }
             )
     },

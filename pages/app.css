@@ -1,0 +1,16 @@
+@import "./color-variables.css";
+
+body {
+  font: 18px/28px Gabriela, serif;
+  font-style: normal;
+  font-weight: normal;
+  color: var(--primary-color);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}

@@ -11,9 +11,7 @@ module.exports = {
     },
 
     sceneById(req, res, sceneId) {
-        const {meta, staticBasePath, title} = req.locals;
-
-        return Scene
+        Scene
             .findAll({
                 where: {
                     id: sceneId
@@ -28,14 +26,12 @@ module.exports = {
                         as: 'achivki'
                     }]
             })
-            .then(scene => res.render('../views/index-scene', {
-                scene: scene[0],
-                firstSceneId: startSceneId,
-                meta,
-                staticBasePath,
-                title
-            }))
+            .then(scene => res.json(scene[0]))
             .catch((error) => res.status(400).send(error));
+    },
+
+    getStartScene(req, res) {
+        module.exports.sceneById(req, res, startSceneId);
     },
 
     nextScene(req, res) {

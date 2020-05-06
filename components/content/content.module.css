@@ -1,0 +1,39 @@
+.scene-content {
+  align-self: center;
+  position: relative;
+  width: 90vw;
+  height: 35vw;
+}
+
+.scene-content > img {
+  width: 90vw;
+  height: 35vw;
+}
+
+.scene-content > span {
+  position: absolute;
+  width: 50%;
+  font-size: 22px;
+  line-height: 36px;
+}
+
+.scene-content-color {
+  color: var(--secondary-color);
+}
+
+.scene-content-left {
+  left: 3%;
+}
+
+.scene-content-bottom {
+  bottom: 8%;
+}
+
+.scene-content-right {
+  text-align: right;
+  right: 3%;
+}
+
+.scene-content-top {
+  top: 8%;
+}
