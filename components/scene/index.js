@@ -15,4 +15,4 @@ function Scene({scene}) {
     );
 }
 
-export default Scene;
+export default React.memo(Scene);

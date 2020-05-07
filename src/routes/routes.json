@@ -1,0 +1,9 @@
+{
+  "ADVENTURES" : "/adventures",
+  "SCENE" : "/scene",
+  "API_ADVENTURES": "/api/adventures",
+  "API_ADVENTURES_START": "/api/adventures/start",
+  "API_SCENE": "/api/scene",
+  "API_REPEAT" : "/api/repeat",
+  "API_HASHTAG" : "/api/hashtag"
+}

@@ -7,7 +7,7 @@ function Achivki({achivkis}) {
         <ul className={styles["achivki"]}>
             {achivkis.map(achivki => {
                 return (
-                    <li className={styles["achivki-item"]}>
+                    <li className={styles["achivki-item"]} key={achivki.id}>
                         <img src={achivki.img}/>
                         <span className={styles["achivki-item-receive"]}>Достижение получено</span>
                         <span className={styles["achivki-item-title"]}>
@@ -20,4 +20,4 @@ function Achivki({achivkis}) {
     );
 }
 
-export default Achivki;
+export default React.memo(Achivki);

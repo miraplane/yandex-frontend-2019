@@ -22,32 +22,19 @@ function getContentPosition(contentPosition) {
     }
 }
 
-function ContentText({content, changeColor, contentPosition}) {
-    const colorStyle = changeColor ? styles["scene-content-color"] : '';
-    const style = `${getContentPosition(contentPosition)} ${colorStyle}`;
-    return (
-        <span className={style}>
-            {content}
-        </span>
-    );
-}
-
 function Content({scene}) {
-    let changeColor = true;
+    const changeColor = !!scene.img;
+    const colorStyle = changeColor ? styles["scene-content-color"] : '';
+    const style = `${getContentPosition(scene.contentPosition)} ${colorStyle}`;
+
     return (
         <article className={styles["scene-content"]}>
-            {(()=>{
-                if (scene.img) {
-                    return <img src={scene.img}/>;
-                }
-                changeColor = false;
-            })()}
-            <ContentText
-                content={scene.content}
-                changeColor={changeColor}
-                contentPosition={scene.contentPosition}/>
+            {scene.img && <img src={scene.img}/>}
+            <span className={style}>
+                {scene.content}
+            </span>
         </article>
     );
 }
 
-export default Content;
+export default React.memo(Content);

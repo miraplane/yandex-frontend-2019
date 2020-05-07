@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import routes from '../src/routes/routes';
 import Header from '../components/header';
 import SelectHashtag from '../components/selectHashtag';
 import Adventures from '../components/adventures';
@@ -30,9 +31,10 @@ class ListByName extends Component {
         }
     }
 
+    load = (url) => fetch(url).then(response => response.json());
+
     loadHashtag = () => {
-        fetch(`/api/hashtag/${this.props.link}`)
-            .then(response => response.json())
+        this.load(`${routes.API_HASHTAG}/${this.props.link}`)
             .then(hashtag => {
                 this.setState({hashtag: hashtag, loading: false});
             });
@@ -50,7 +52,7 @@ class ListByName extends Component {
             <React.Fragment>
                 <Header/>
                 <SelectHashtag hashtag={hashtag}/>
-                <Adventures fetchUrl={`/api/adventures/${hashtag.link}`}/>
+                <Adventures fetchUrl={`${routes.API_ADVENTURES}/${hashtag.link}`}/>
             </React.Fragment>
         );
     }

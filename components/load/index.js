@@ -11,4 +11,4 @@ function LoadEllipsis() {
     );
 }
 
-export default LoadEllipsis;
+export default React.memo(LoadEllipsis);

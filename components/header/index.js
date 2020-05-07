@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import React from 'react';
 
+import routes from '../../src/routes/routes';
 import styles from './header.module.css';
 
 function Header() {
-    const linkAs = '/adventures';
+    const linkAs = routes.ADVENTURES;
     const linkHref = { pathname: '/list' };
 
     return (
@@ -19,4 +20,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default React.memo(Header);

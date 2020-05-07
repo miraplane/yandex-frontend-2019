@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import routes from '../src/routes/routes';
 import Header from '../components/header';
 import Scene from '../components/scene';
 import LoadEllipsis from "../components/load";
@@ -34,11 +35,11 @@ class ScenePage extends Component {
     getUrlFetch = () => {
         switch (this.props.command) {
             case 'start':
-                return `/api/adventures/start/${this.props.id}`;
+                return `${routes.API_ADVENTURES_START}/${this.props.id}`;
             case 'next':
-                return `/api/scene/${this.props.id}`;
+                return `${routes.API_SCENE}/${this.props.id}`;
             case 'repeat':
-                return '/api/start-scene';
+                return routes.API_REPEAT;
             default:
                 return;
         }

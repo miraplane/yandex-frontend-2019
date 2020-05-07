@@ -1,8 +1,7 @@
-import Link from 'next/link';
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-import Hashtags from '../hashtags';
+import AdventureItem from '../adventureItem';
 import styles from './adventures.module.css';
 import LoadEllipsis from "../load";
 
@@ -38,9 +37,10 @@ class Adventures extends React.Component {
         }
     }
 
+   load = (url) => fetch(url).then(response => response.json());
+
     fetchAdventures = () => {
-        fetch(`${this.props.fetchUrl}?offset=${this.state.adventures.length}`)
-            .then(response => response.json())
+        this.load(`${this.props.fetchUrl}?offset=${this.state.adventures.length}`)
             .then(adventures => {
                 if (adventures.length !== 0) {
                     const data = this.state.adventures.concat(adventures);
@@ -65,43 +65,17 @@ class Adventures extends React.Component {
                     hasMore={hasMore}
                     loader={<LoadEllipsis/>}
                 >
-                {adventures.map(adventure => {
-                    const linkAs = `/scene/start?id=${adventure.id}`;
-                    const linkHref = {
-                        pathname: '/scene',
-                        query: {command: 'start', id: adventure.id}
-                    };
-
-                    return (
-                        <li className={styles["adventure-item"]}>
-                            <Link as={linkAs} href={linkHref}>
-                                <a className={styles["adventure-item-img"]}>
-                                    <img src={adventure.img}/>
-                                </a>
-                            </Link>
-                            <Link as={linkAs} href={linkHref}>
-                                <a className={styles["adventure-item-title"]}>
-                                    {adventure.title}
-                                </a>
-                            </Link>
-                            <span className={styles["adventure-item-content"]}>
-                            {adventure.content}
-                        </span>
-                            <Hashtags hashtags={adventure.hashtags}/>
-                        </li>
-                    );
-                })}
+                {adventures.map(adventure =>
+                    <li className={styles["adventure-item"]} key={adventure.id}>
+                        <AdventureItem adventure={adventure}/>
+                    </li>
+                )}
                 </InfiniteScroll>
-                {(() => {
-                    if (error) {
-                        const message = 'Не удалось загрузить приключения. Пожалуйста, повтрите попытку позже';
-                        return (
-                            <div className={styles["loading-error"]}>
-                                {message}
-                            </div>
-                        );
-                    }
-                })()}
+                {error && (
+                    <div className={styles["loading-error"]}>
+                        Не удалось загрузить приключения. Пожалуйста, повтрите попытку позже
+                    </div>
+                )}
             </ul>
         );
     }

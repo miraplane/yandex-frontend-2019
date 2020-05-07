@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
+import routes from '../../src/routes/routes';
 import styles from './action.module.css';
 
 function Action({actions}) {
@@ -8,14 +9,14 @@ function Action({actions}) {
         return (
             <ul className={styles["action"]}>
                 {actions.map(action => {
-                    const linkAs = `/scene/next?id=${action.nextSceneId}`;
+                    const linkAs = `${routes.SCENE}/next?id=${action.nextSceneId}`;
                     const linkHref = {
                         pathname: '/scene',
                         query: {command: 'next', id: action.nextSceneId}
                     };
 
                     return (
-                        <li className={styles["action-item"]}>
+                        <li className={styles["action-item"]} key={action.id}>
                             <Link as={linkAs} href={linkHref}>
                                 <a>{action.title}</a>
                             </Link>
@@ -25,7 +26,7 @@ function Action({actions}) {
             </ul>
         );
     } else {
-        const linkAs = `/scene/repeat`;
+        const linkAs = `${routes.SCENE}/repeat`;
         const linkHref = {
             pathname: '/scene',
             query: {command: 'repeat'}
@@ -41,4 +42,4 @@ function Action({actions}) {
     }
 }
 
-export default Action;
+export default React.memo(Action);

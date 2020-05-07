@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
+import routes from '../src/routes/routes';
 import Header from '../components/header';
 import Adventures from '../components/adventures';
-
 
 class IndexPage extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class IndexPage extends Component {
         return (
             <React.Fragment>
                 <Header/>
-                <Adventures fetchUrl={'/api/adventures'} hasMore={true}/>
+                <Adventures fetchUrl={routes.API_ADVENTURES} hasMore={true}/>
             </React.Fragment>
         );
     }

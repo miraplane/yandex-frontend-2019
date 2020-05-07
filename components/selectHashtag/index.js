@@ -10,4 +10,4 @@ function SelectHashtag({hashtag}) {
     );
 }
 
-export default SelectHashtag;
+export default React.memo(SelectHashtag);

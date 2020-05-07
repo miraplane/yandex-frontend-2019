@@ -16,31 +16,6 @@
     / 200px minmax(auto, 520px);
 }
 
-.adventure-item-img {
-  grid-area: img;
-  align-self: center;
-}
-
-.adventure-item-img > img {
-  width: 200px;
-  height: 150px;
-}
-
-.adventure-item-title {
-  grid-area: title;
-  font-size: 30px;
-  line-height: 15px;
-}
-
-.adventure-item-content {
-  grid-area: content;
-  margin: 20px 0;
-}
-
-.adventure-item-content:empty {
-  display: none;
-}
-
 .loading-error {
   align-self: center;
   width: 380px;
