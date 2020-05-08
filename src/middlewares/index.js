@@ -1,14 +1,7 @@
-const config = require('config');
-
-module.exports = (req, _res, next) => {
-    // Хранение в req.locals – рекомендованный способ
-    req.locals = {
-        meta: {
-            charset: 'utf-8',
-            description: 'Awesome notes'
-        },
-        title: 'Awesome notes',
-        staticBasePath: config.get('staticBasePath'),
+module.exports = (nextApp) => (req, res, next) => {
+    req.nextApp = nextApp;
+    res.renderPage = (pathname, query) => {
+        nextApp.render(req, res, pathname, query);
     };
 
     next();
