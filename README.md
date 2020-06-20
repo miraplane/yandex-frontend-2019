@@ -1,4 +1,24 @@
-### Доступные команды
+# Курсы по фронтенду в УрФУ 2019-2020
+
+Итоговый проект по дисциплине.
+[Сервис](https://miraplane-task-2019.herokuapp.com/) размещен в облаке Heroku.
+
+## Используемые технологии
+
+Первая версия приложения построена на следующих технологиях:
+
+- [TypeScript](https://www.typescriptlang.org)
+- [Node.js](https://nodejs.org)
+- [Express.js](https://expressjs.com/ru/)
+- [PostgreSQL](https://www.postgresql.org)
+- [Sequelize](http://docs.sequelizejs.com)
+- [Handlebars for Express.js](https://github.com/pillarjs/hbs)
+
+Вторая версия приложения построена на том же набор технологии, но для клиентской логики на стороне браузера теперь используется чистый JavaScript, DOM и другие API браузера.
+
+В третьей версии приложения вместо handlebars и чистого JavaScript для организации всего клиентского кода используется React.
+
+## Доступные команды
 
 | Команда | Действие |
 | ------------- | ------------- |
